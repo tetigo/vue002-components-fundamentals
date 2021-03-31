@@ -1,7 +1,7 @@
 Vue.component('plan', {
     template: '#plan-template',
     // props: ['name'],
-    
+
     // props: {
     //     name: String,
     // },
@@ -15,15 +15,22 @@ Vue.component('plan', {
     }
 })
 
+Vue.component('plan-picker', {
+    template: '#plan-picker-template',
+    data() {
+        return {
+            plans: [
+                'The Hacker',
+                'The Curious',
+                'The Single',
+                'The Addict'
+            ]
+        }
+    }
+})
+
 
 new Vue({
     el: '#app',
-    data: {
-        plans: [
-            'The Hacker',
-            'The Curious',
-            'The Single',
-            'The Addict'
-        ]
-    }
+   
 })
