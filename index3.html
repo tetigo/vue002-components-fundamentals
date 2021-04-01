@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Slots Fundamentals</title>
+</head>
+<style>
+    .done {
+        color: green;
+        text-decoration: line-through;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h1 class="">Vue Slots Fundamentals</h1>
+
+        <todo-item>Buy Courses</todo-item>
+
+
+        <script type="text/x-template" id="todo-item-component">
+            <div>
+                <input type="checkbox" v-model="completed">
+                <span v-bind:class="{done: completed}">
+                    <slot></slot>
+                </span>
+            </div>
+        </script>
+
+        <script src="https://unpkg.com/vue"></script>
+        <script src="app3.js"></script>
+    </div>
+</body>
+
+</html>
