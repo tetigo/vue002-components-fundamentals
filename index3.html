@@ -19,14 +19,28 @@
         <h1 class="">Vue Slots Fundamentals</h1>
 
         <todo-item>Buy Courses</todo-item>
+        <todo-item>Buy Books</todo-item>
+        <todo-item>Buy Houses</todo-item>
+        <todo-item>
+            Buy Cars
+            <!-- <template v-slot:description>Some description about cars</template> -->
+            <!-- shorthand for v-slot === # -->
+            <template #description>Some description about cars</template>
+            <template #button-text>MyButton</template>
+        </todo-item>
 
-
+        <!-- pra passar HTML ou markup pro componente slots é melhor -->
+        <!-- pra passar dados pro componente props é melhor -->
         <script type="text/x-template" id="todo-item-component">
             <div>
                 <input type="checkbox" v-model="completed">
                 <span v-bind:class="{done: completed}">
                     <slot></slot>
                 </span>
+                <slot name="description"></slot>
+                <button>
+                    <slot name="button-text">HighLight</slot>
+                </button>
             </div>
         </script>
 
