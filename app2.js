@@ -1,22 +1,31 @@
-
-//usado somente localmente, não precisa ser Vue.component
-//pois cria globalmente e fica em memoria sem necessidade
-let planComponent=  {
+let planPickerItemComponent=  {
     template: '#plan-template',
     props: {
         name: {
             type: String,
             default: 'Tiago The Great',
             required: true
+        },
+        selectedPlan: {
+            type: String,
+        }
+    },
+    computed:{
+        isSelected(){
+            return this.name === this.selectedPlan
+        }
+    },
+    methods: {
+        select(){
+            this.$emit('select', this.name)
         }
     }
 }
 
-// now planComponent registered locally
-Vue.component('plan-picker', {
-    template: '#plan-picker-template',
+let planPickerComponent =  {
+    template: '#plan-picker-item-template',
     components: {
-        plan: planComponent,
+        'plan-picker-item': planPickerItemComponent,
     },
     data() {
         return {
@@ -25,13 +34,21 @@ Vue.component('plan-picker', {
                 'The Curious',
                 'The Single',
                 'The Addict'
-            ]
+            ],
+            selectedPlan: null
+        }
+    },
+    methods:{
+        selectPlan(plan){
+            this.selectedPlan = plan;
         }
     }
-})
+}
 
 
 new Vue({
     el: '#app',
-   
+    components: {
+        "plan-picker": planPickerComponent
+    }
 })
